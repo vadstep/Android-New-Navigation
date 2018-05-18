@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import kotlinx.android.synthetic.main.main_fragment.*
 
@@ -51,14 +52,24 @@ class MainFragment : Fragment() {
         //TODO ENDSTEP 6
 
         //TODO STEP 7 - Update the OnClickListener to navigate using an action
-//        view.findViewById<Button>(R.id.navigate_action_bt)?.setOnClickListener(
-//                Navigation.createNavigateOnClickListener(R.id.next_action, null)
-//        )
+        navigate_action_bt.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.next_action, null)
+        )
 
         //TODO ENDSTEP 7
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater?.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.shopping_cart ->{
+                activity?.let { findNavController(it,id).navigate(R.id.shopping_fragment, null) }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

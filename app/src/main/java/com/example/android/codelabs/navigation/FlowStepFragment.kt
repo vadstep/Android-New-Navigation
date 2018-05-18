@@ -22,6 +22,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.flow_step_one_fragment.*
 
 /**
  * Presents how multiple steps flow could be implemented.
@@ -34,13 +35,13 @@ class FlowStepFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
 
-        val step = arguments?.getInt("step")
+ //       val step = arguments?.getInt("step")
 
         // TODO STEP 9 - Use type-safe arguments - remove previous line!
-//        val step = arguments?.let {
-//            val safeArgs = FlowStepFragmentArgs.fromBundle(it)
-//            safeArgs.step
-//        }
+        val step = arguments?.let {
+            val safeArgs = FlowStepFragmentArgs.fromBundle(it)
+            safeArgs.step
+        }
         // TODO ENDSTEP 9
 
         return when (step) {
@@ -52,7 +53,7 @@ class FlowStepFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<View>(R.id.next_button).setOnClickListener(
+        next_button.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.next_action)
         )
     }
