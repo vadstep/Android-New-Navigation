@@ -52,4 +52,5 @@ ext {
     espressoVersion = "2.2.2"
     navigationVersion = "1.0.0-alpha01"
     constraintLayoutVersion = "1.1.0"
+    anko_version='0.10.5'
 }
